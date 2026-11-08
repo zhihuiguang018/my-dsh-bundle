@@ -1,0 +1,46 @@
+{
+  "name": "my-dsh-bundle",
+  "version": "0.1.0",
+  "description": "Personal DeepSeek Harness (DSH) web UI bundle: search, skin center, workshop, usage dashboard, reasoning-effort editor, better sidebar, desktop pet and pocket remote access in one install.",
+  "license": "MIT",
+  "private": false,
+  "files": [
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "THIRD_PARTY_NOTICES.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "dsh-bundle"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "dependencies": {
+    "@anysearch/anysearch-dsh": "0.1.8",
+    "@linxin666/dsh-client-ui-market": "0.4.8",
+    "@linxin666/dsh-client-ui-skin-center": "0.4.8",
+    "dsh-all-usage": "1.2.1",
+    "dsh-better-reasoning-effort": "0.5.4",
+    "dsh-better-sidebar": "0.28.0",
+    "dsh-pet": "0.3.7",
+    "dsh-pocket": "2.12.0"
+  },
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.2.1-rc.2"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [],
+      "platform": "web"
+    }
+  }
+}

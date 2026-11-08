@@ -1,0 +1,15 @@
+packages:
+  - .
+
+# DSH 宿主包（@deepseek-ai/dsh-*）由 DSH 应用本体提供，不从 npm 安装。
+# 关掉自动装 peer，否则 pnpm 会去拉注册表上的旧版本（如 @deepseek-ai/dsh-tools@0.0.1-rc.1）而失败。
+autoInstallPeers: false
+
+# 与 DSH profile 保持一致的 hoisted 布局。
+nodeLinker: hoisted
+
+# 允许这些依赖执行构建脚本（否则 pnpm 会以 ERR_PNPM_IGNORED_BUILDS 中止）。
+allowBuilds:
+  '@google/genai': true
+  node-pty: true
+  protobufjs: true

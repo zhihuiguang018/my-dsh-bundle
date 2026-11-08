@@ -1,0 +1,48 @@
+# my-dsh-bundle — bundle patch
+#
+# 每一行挂载一个真实插件包：loader 会加载该包本身并服务它自己的浏览器半边。
+# 行 id 统一加 `my-` 前缀，因此本聚合包可以和任何插件的独立安装并存，
+# 不会与它们各自的 patch 行（如 ui-market / ui-skin-center / dsh-pet）撞名。
+#
+# 想让某个插件失效：在你的 profile 的 cordis.patch.yml 里用同一个 id 写
+# `disabled: true` 覆盖即可，不要改本文件。
+
+# 把宿主 web 行的搜索/抓取后端指向 AnySearch。
+# 若你同时独立安装了 @anysearch/anysearch-dsh，这一行会是重复覆盖（值相同，无副作用）。
+- id: web
+  config:
+    searchProvider: anysearch
+    fetchProvider: anysearch
+
+- insert:
+    # ---- 搜索 ----
+    - id: my-web-search-anysearch
+      name: '@anysearch/anysearch-dsh'
+      config:
+        apiKeyEnv: ANYSEARCH_API_KEY
+
+    # ---- 外观：皮肤中心 + 创意工坊 ----
+    - id: my-ui-skin-center
+      name: '@linxin666/dsh-client-ui-skin-center'
+    - id: my-ui-market
+      name: '@linxin666/dsh-client-ui-market'
+
+    # ---- 用量统计 ----
+    - id: my-all-usage
+      name: 'dsh-all-usage'
+
+    # ---- 模型推理档位与输入模态 ----
+    - id: my-better-reasoning-effort
+      name: 'dsh-better-reasoning-effort'
+
+    # ---- 侧边栏工作台（文件树 / 编辑器 / Git / 任务 / 侧聊）----
+    - id: my-better-sidebar
+      name: 'dsh-better-sidebar'
+
+    # ---- 桌宠 ----
+    - id: my-dsh-pet
+      name: 'dsh-pet'
+
+    # ---- 手机远程访问 ----
+    - id: my-dsh-pocket
+      name: 'dsh-pocket'
